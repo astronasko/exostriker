@@ -1,25 +1,65 @@
 #!/usr/bin/python3
 __author__ = 'Trifon Trifonov'
 
+#import batman as batman
+#import BKR as bkr
+import calculator as calc
+#import collections 
+import dill
+dill._dill._reverse_typemap['ObjectType'] = object
+dill.settings['fmode']
+import gls as gls
+import qso
+import gui_groups
+import json
+#import matplotlib as mpl
+import mlp as mlp
+import ntpath
+import numpy as np
+import os
+import pg_hack
+import pyqtgraph as pg
+import pyqtgraph.console as pg_console
+import RV_mod as rv
+import sys
+import scipy.stats as stat
 import time 
+import terminal
+import tls_hack
+import traceback
+import word_processor_es as text_editor_es
+import webbrowser
+
+from activity_window import ActivityWindow
+from cornerplot_parameter_window import show_param_boxes
+from datafiles_window import datafiles_window
+from detrend_window import DetrendWindow
+from Jupyter_emb import ConsoleWidget_embed
+from multiprocessing import cpu_count
 from pathos.multiprocessing import freeze_support
 freeze_support()
-
-import numpy as np
-#import matplotlib as mpl
-#mpl.use('Qt5Agg')
-
-import sys, os, traceback 
+from print_info_window import print_info
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
-import json
+from rvs_window import RvsWindow
+from RVBank_window import RVBank_window
+#from RVBank_window import RVBank_window as DetrendWindow
+from scipy.interpolate import interp1d
+from scipy.signal import argrelextrema
+from scipy.stats.stats import pearsonr   
+from stdout_pipe import MyDialog, DebugDialog
+from symbols_window import show_symbols
+from TESS_pdc_window import pdc
+from worker import Worker #, WorkerSignals
+#from doublespinbox import DoubleSpinBox
 
-#import collections 
+#mpl.use('Qt5Agg')
+#sys.path.insert(0, './lib')
+
 #if sys.version_info.major == 3 and sys.version_info.minor >= 10:
 #    from collections.abc import MutableMapping
 #else:
 #    from collections import MutableMapping
-
-#sys.path.insert(0, './lib') 
+ 
 es_path = os.path.dirname(os.path.abspath(__file__))
 lib_path = os.path.join(es_path, 'lib')
 
@@ -47,58 +87,10 @@ if not sys.warnoptions:
     import warnings
     warnings.simplefilter("ignore")
 
-import RV_mod as rv
 
-import pyqtgraph as pg
-import pyqtgraph.console as pg_console
-
-import word_processor_es as text_editor_es
-import calculator as calc
-import gls as gls
-import mlp as mlp
-from worker import Worker #, WorkerSignals
 #start_time = time.time()
-import gui_groups
-import qso
-
-from multiprocessing import cpu_count
-
-#import BKR as bkr
-#from doublespinbox import DoubleSpinBox
-from Jupyter_emb import ConsoleWidget_embed
 
 
-
-from stdout_pipe import MyDialog, DebugDialog
-from print_info_window import print_info
-from symbols_window import show_symbols
-from TESS_pdc_window import pdc
-
-from cornerplot_parameter_window import show_param_boxes
-
-
-
-from datafiles_window import datafiles_window
-from RVBank_window import RVBank_window
-
-from detrend_window import DetrendWindow
-from activity_window import ActivityWindow
-from rvs_window import RvsWindow
-#from RVBank_window import RVBank_window as DetrendWindow
-
-
-import terminal
-import webbrowser
-import ntpath
-import pg_hack
-import tls_hack
-
-from scipy.signal import argrelextrema
-from scipy.stats.stats import pearsonr   
-import scipy.stats as stat
-from scipy.interpolate import interp1d
-
-#import batman as batman
 
 try:
     import ttvfast as ttvfast
@@ -142,9 +134,6 @@ except (ImportError, KeyError) as e:
 #    import cPickle as pickle
 #except ModuleNotFoundError:
 #    import pickle
-import dill
-dill._dill._reverse_typemap['ObjectType'] = object
-dill.settings['fmode']
 
 #os.system("taskset -p %s" %os.getpid())
 os.environ["OPENBLAS_MAIN_FREE"] = "1"
